@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貓咪品種介紹</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>貓咪品種介紹</h1>
+        <p>探索各種可愛的貓咪品種，了解它們的特點與性格！</p>
+    </header>
+    
+    <main id="cat-list">
+        <div class="cat-card" data-id="4" data-name="暹羅貓">
+            <img src="siamese.jpg" alt="暹羅貓">
+            <h3>暹羅貓</h3>
+        </div>
+        <div class="cat-card" data-id="5" data-name="英國短毛貓">
+            <img src="british_shorthair.jpg" alt="英國短毛貓">
+            <h3>英國短毛貓</h3>
+        </div>
+        <div class="cat-card" data-id="6" data-name="波斯貓">
+            <img src="persian.jpg" alt="波斯貓">
+            <h3>波斯貓</h3>
+        </div>
+    </main>
+    <div id=購物車></div>
+    <script>
+         let u = $("<button>購物車</button>").appendTo('body').on('click', () => {
+        let o = $("#購物車");
+        if (o.find('table[表格]').length > 0) {
+        o.empty(); 
+        } else {
+        購物車(o); 
+        }
+        });
+        $(".cat-card").on("click", function () {
+        if ($(this).hasClass("selected")) {
+           $(this).removeClass("selected");
+        } else {
+           $(".cat-card").removeClass("selected");
+           $(this).addClass("selected");
+           const animalName = $(this).data("name");
+           showAnimalInfo('cat', animalName);
+        }
+        });
+    </script>
+    
+    <section id="animal-info" class="hidden">
+        <button onclick="closeAnimalInfo()">關閉</button>
+        <h2 id="animal-name"></h2>
+        <p id="animal-description"></p>
+        <div id="button-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
